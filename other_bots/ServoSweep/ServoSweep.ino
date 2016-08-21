@@ -8,10 +8,11 @@ void setup() {
   myservo.attach(pinA0);
 }
 
+int offset = -9;
 void loop() {
-    myservo.write(0);
+    myservo.write(42+offset);
     delay(2000);
-    myservo.write(45);
+    myservo.write(90+offset);
     delay(2000);
 }
 
