@@ -52,12 +52,59 @@ function chip() {
    }).translate([0,2.1,0]).scale(1);
 }
 
+function otherCuts(){
+    return union(
+        cube({
+            size: [2,30,30],
+            center: [true, false, false]
+        }).translate([0,-20,45]),
+        cube({
+            size: [2,30,2.5],
+            center: [true, false, false]
+        }).translate([0,-20,0])
+    );
+}
 
+function cutouts(){
+    const HEIGHT = INSERT_HEIGHT;
+    return union(
+        cube({
+            size: [2,5,HEIGHT],
+            center: [true, false, false]
+        }).translate([0,-1,0]),
+        cube({
+            size: [2,5,HEIGHT],
+            center: [true, false, false]
+        }).translate([0,-16,0]),
+        cube({
+            size: [2,2,HEIGHT],
+            center: [true, false, false]
+        }).translate([-5,1.1,0]),
+        cube({
+            size: [2,2.75,HEIGHT],
+            center: [true, false, false]
+        }).translate([-5,-16,0]),
+        cube({
+            size: [2,2,HEIGHT],
+            center: [true, false, false]
+        }).translate([5,1.1,0]),
+        cube({
+            size: [2,2.75,HEIGHT],
+            center: [true, false, false]
+        }).translate([5,-16,0]),
+        otherCuts(),
+        otherCuts().translate([5,0,0]),
+        otherCuts().translate([-5,0,0]),
+        otherCuts().translate([-11.9,0,0]),
+        otherCuts().translate([11.9,0,0])
+    );
+}
 
 function main(){
     return difference(
         lower(),
-        chip()
+        chip(),
+        cutouts()
     ).setColor([0.5,0.5,0.5]);
 }
 
