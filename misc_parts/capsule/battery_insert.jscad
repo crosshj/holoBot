@@ -5,15 +5,15 @@ const LIP_RADIUS = 29.74;
 
 const INSERT_HEIGHT = INNER_HEIGHT - (LIP_HEIGHT*2);
 
-const BATTERY_RADIUS = 12.88/2;
+const BATTERY_RADIUS = 14.03/2;
 const BATTERY_HEIGHT = 50.40;
 
 const CHIP_WIDTH = 25.9;
-const CHIP_HEIGHT = 7.27;
+const CHIP_HEIGHT = 5.27;
 
 function lower() {
-    const OFFSET = 6.0;
-    const SPREAD = 7;
+    const OFFSET = 3.9;
+    const SPREAD = 7.25;
    const HEIGHT = INSERT_HEIGHT;
    return difference(
          cylinder({r: INNER_RADIUS, h: HEIGHT, fn: 80}),
@@ -49,7 +49,7 @@ function chip() {
    return cube({
        size: [CHIP_WIDTH,CHIP_HEIGHT+20,HEIGHT],
        center: [true, false, false]
-   }).translate([0,2.1,0]).scale(1);
+   }).translate([0,3.8,0]).scale(1);
 }
 
 function otherCuts(){
@@ -69,11 +69,11 @@ function cutouts(){
     const HEIGHT = INSERT_HEIGHT;
     return union(
         cube({
-            size: [2,5,HEIGHT],
+            size: [2,3.75,HEIGHT],
             center: [true, false, false]
-        }).translate([0,-1,0]),
+        }).translate([0,0.75,0]),
         cube({
-            size: [2,5,HEIGHT],
+            size: [2,6,HEIGHT],
             center: [true, false, false]
         }).translate([0,-16,0]),
         cube({
@@ -105,7 +105,7 @@ function main(){
         lower(),
         chip(),
         cutouts()
-    ).setColor([0.5,0.5,0.5]);
+    ).setColor([0.5,1,0.5]);
 }
 
 
